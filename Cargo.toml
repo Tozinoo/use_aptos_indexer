@@ -1,0 +1,21 @@
+[package]
+name = "use_aptos_indexer"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+aptos-sdk = { git = "https://github.com/aptos-labs/aptos-core", branch = "devnet" }
+anyhow = "1.0.93"
+clap = { version = "4.5.21", features = ["derive"] }
+url = "2.5.3"
+tokio = "1.41.1"
+dotenv = "0.15.0"
+
+[patch.crates-io]
+merlin = { git = "https://github.com/aptos-labs/merlin" }
+x25519-dalek = { git = "https://github.com/aptos-labs/x25519-dalek", branch = "zeroize_v1" }
+
+[build]
+rustflags = ["--cfg", "tokio_unstable"]
